@@ -40,7 +40,7 @@ RUN set -ex \
     && ssh-keyscan -t rsa,dsa -H bitbucket.org >> ~/.ssh/known_hosts \
     && chmod 600 ~/.ssh/known_hosts \
     && DEBIAN_FRONTEND="noninteractive" TZ="Europe/London" apt-get install -y --no-install-recommends \
-       wget=1.19.4-* python=2.7.* python2.7-dev=2.7.* fakeroot=1.22-* ca-certificates \
+       sudo=1.8.* wget=1.19.4-* python=2.7.* python2.7-dev=2.7.* fakeroot=1.22-* \
        tar=1.29b-* gzip=1.6-* zip=3.0-* autoconf=2.69-* automake=1:1.15.* \
        bzip2=1.0.* file=1:5.32-* g++=4:7.4.* gcc=4:7.4.* imagemagick=8:6.9.* \
        libbz2-dev=1.0.* libc6-dev=2.27-* libcurl4-openssl-dev=7.58.* libdb-dev=1:5.3.* \
