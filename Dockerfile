@@ -102,8 +102,8 @@ VOLUME /var/lib/docker
 COPY dockerd-entrypoint.sh /usr/local/bin/
 
 ENV RUBY_MAJOR="2.7" \
-    RUBY_VERSION="2.7.3" \
-    RUBY_DOWNLOAD_SHA256="8925a95e31d8f2c81749025a52a544ea1d05dad18794e6828709268b92e55338" \
+    RUBY_VERSION="2.7.4" \
+    RUBY_DOWNLOAD_SHA256="3043099089608859fc8cce7f9fdccaa1f53a462457e3838ec3b25a7d609fbc5b" \
     RUBYGEMS_VERSION="3.1.6" \
     BUNDLER_VERSION="2.1.4" \
     GEM_HOME="/usr/local/bundle"
