@@ -147,4 +147,5 @@ RUN mkdir -p /usr/local/etc \
     && chmod 777 "$GEM_HOME" "$BUNDLE_BIN" \
     && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+VOLUME /var/lib/docker
 CMD [ "irb" ]
