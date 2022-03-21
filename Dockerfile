@@ -39,7 +39,7 @@ RUN set -ex \
        libevent-dev=2.1.* libffi-dev=3.2.* libgeoip-dev=1.6.* libglib2.0-dev=2.56.* \
        libjpeg-dev=8c-* libkrb5-dev=1.16-* liblzma-dev=5.2.* \
        libmagickcore-dev=8:6.9.* libmagickwand-dev=8:6.9.* libmysqlclient-dev=5.7.* \
-       libncurses5-dev=6.1-* libpng-dev=1.6.* libpq5=10.18-* libpq-dev=10.18-* libreadline-dev=7.0-* \
+       libncurses5-dev=6.1-* libpng-dev=1.6.* libpq5=10.19-* libpq-dev=10.19-* libreadline-dev=7.0-* \
        libsqlite3-dev=3.22.* libssl-dev=1.1.* libtool=2.4.* libwebp-dev=0.6.* \
        libxml2-dev=2.9.* libxslt1-dev=1.1.* libyaml-dev=0.1.* make=4.1-* \
        patch=2.7.* xz-utils=5.2.* zlib1g-dev=1:1.2.* unzip=6.0-* curl=7.58.* \
@@ -103,8 +103,8 @@ VOLUME /var/lib/docker
 COPY dockerd-entrypoint.sh /usr/local/bin/
 
 ENV RUBY_MAJOR="2.7" \
-    RUBY_VERSION="2.7.4" \
-    RUBY_DOWNLOAD_SHA256="3043099089608859fc8cce7f9fdccaa1f53a462457e3838ec3b25a7d609fbc5b" \
+    RUBY_VERSION="2.7.5" \
+    RUBY_DOWNLOAD_SHA256="2755b900a21235b443bb16dadd9032f784d4a88f143d852bc5d154f22b8781f1" \
     RUBYGEMS_VERSION="3.1.6" \
     BUNDLER_VERSION="2.1.4" \
     GEM_HOME="/usr/local/bundle"
