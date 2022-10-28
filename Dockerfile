@@ -10,7 +10,7 @@
 # See the License for the specific language governing permissions and limitations under the License.
 #
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Install git, SSH, and other utilities
 RUN set -ex \
@@ -18,43 +18,105 @@ RUN set -ex \
     && apt-get update \
     && apt-get install -y --no-install-recommends gnupg ca-certificates \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
-    && echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
+    && echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
     && apt-get update \
     && apt-get install software-properties-common -y --no-install-recommends \
     && apt-add-repository ppa:git-core/ppa \
     && apt-get update \
     && apt-get install git=1:2.* -y --no-install-recommends \
     && git version \
-    && apt-get install -y --no-install-recommends openssh-client=1:7.6* \
+    && apt-get install -y --no-install-recommends openssh-client=1:8.2* \
     && mkdir ~/.ssh \
     && touch ~/.ssh/known_hosts \
     && ssh-keyscan -t rsa,dsa -H github.com >> ~/.ssh/known_hosts \
     && ssh-keyscan -t rsa,dsa -H bitbucket.org >> ~/.ssh/known_hosts \
     && chmod 600 ~/.ssh/known_hosts \
     && DEBIAN_FRONTEND="noninteractive" TZ="Europe/London" apt-get install -y --no-install-recommends \
-       sudo=1.8.* wget=1.19.4-* python=2.7.* python2.7-dev=2.7.* fakeroot=1.22-* \
-       tar=1.29b-* gzip=1.6-* zip=3.0-* autoconf=2.69-* automake=1:1.15.* \
-       bzip2=1.0.* file=1:5.32-* g++=4:7.4.* gcc=4:7.4.* imagemagick=8:6.9.* \
-       libbz2-dev=1.0.* libc6-dev=2.27-* libcurl4-openssl-dev=7.58.* libdb-dev=1:5.3.* \
-       libevent-dev=2.1.* libffi-dev=3.2.* libgeoip-dev=1.6.* libglib2.0-dev=2.56.* \
-       libjpeg-dev=8c-* libkrb5-dev=1.16-* liblzma-dev=5.2.* \
-       libmagickcore-dev=8:6.9.* libmagickwand-dev=8:6.9.* libmysqlclient-dev=5.7.* \
-       libncurses5-dev=6.1-* libpng-dev=1.6.* libpq5=10.22-* libpq-dev=10.22-* libreadline-dev=7.0-* \
-       libsqlite3-dev=3.22.* libssl-dev=1.1.* libtool=2.4.* libwebp-dev=0.6.* \
-       libxml2-dev=2.9.* libxslt1-dev=1.1.* libyaml-dev=0.1.* make=4.1-* \
-       patch=2.7.* xz-utils=5.2.* zlib1g-dev=1:1.2.* unzip=6.0-* curl=7.58.* \
-       e2fsprogs=1.44.* iptables=1.6.* xfsprogs=4.9.* xz-utils=5.2.* \
-       mono-devel less=487-* groff=1.22.* liberror-perl=0.17025-* \
-       asciidoc=8.6.* build-essential=12.* bzr=2.7.* cvs=2:1.12.* cvsps=2.1-* docbook-xml=4.5-* docbook-xsl=1.79.* dpkg-dev=1.19.* \
-       libdbd-sqlite3-perl=1.56-* libdbi-perl=1.640-* libdpkg-perl=1.19.* libhttp-date-perl=6.02-* \
-       libio-pty-perl=1:1.08-* libserf-1-1=1.3.* libsvn-perl=1.9.* libsvn1=1.9.* libtcl8.6=8.6.* libtimedate-perl=2.3000-* \
-       libunistring2=0.9.* libxml2-utils=2.9.* libyaml-perl=1.24-* python-bzrlib=2.7.* python-configobj=5.0.* \
-       sgml-base=1.29 sgml-data=2.0.* subversion=1.9.* tcl=8.6.* tcl8.6=8.6.* xml-core=0.18* xmlto=0.0.* xsltproc=1.1.* \
+       sudo=1.8.* \
+       wget=1.20.* \
+       fakeroot=1.24-* \
+       tar=1.30* \
+       gzip=1.10-* \
+       zip=3.0-* \
+       autoconf=2.69-* \
+       automake=1:1.16.* \
+       bzip2=1.0.* \
+       file=1:5.38-* \
+       g++=4:9.3.* \
+       gcc=4:9.3.* \
+       imagemagick=8:6.9.* \
+       libbz2-dev=1.0.8-* \
+       libc6-dev=2.31-* \
+       libcurl4-openssl-dev=7.68.* \
+       libdb-dev=1:5.3.* \
+       libevent-dev=2.1.* \
+       libffi-dev=3.3-* \
+       libgeoip-dev=1.6.* \
+       libglib2.0-dev=2.64.* \
+       libjpeg-dev=8c-* \
+       libkrb5-dev=1.17-* \
+       liblzma-dev=5.2.* \
+       libmagickcore-dev=8:6.9.* \
+       libmagickwand-dev=8:6.9.* \
+       libmysqlclient-dev=8.0.* \
+       libncurses5-dev=6.2-* \
+       libpng-dev=1.6.* \
+       libpq5=12.12-* \
+       libpq-dev=12.12-* \
+       libreadline-dev=8.0-* \
+       libsqlite3-dev=3.31.* \
+       libssl-dev=1.1.* \
+       libtool=2.4.* \
+       libwebp-dev=0.6.* \
+       libxml2-dev=2.9.* \
+       libxslt1-dev=1.1.* \
+       libyaml-dev=0.2.* \
+       make=4.2.* \
+       patch=2.7.* \
+       xz-utils=5.2.* \
+       zlib1g-dev=1:1.2.* \
+       unzip=6.0-* \
+       curl=7.68.* \
+       e2fsprogs=1.45.* \
+       iptables=1.8.* \
+       xfsprogs=5.3.* \
+       xz-utils=5.2.* \
+       less=551-* \
+       groff=1.22.* \
+       liberror-perl=0.17029-* \
+       asciidoc=9.0.* \
+       build-essential=12.* \
+       bzr=2.7.* \
+       cvs=2:1.12.* \
+       cvsps=2.1-* \
+       docbook-xml=4.5-* \
+       docbook-xsl=1.79.* \
+       dpkg-dev=1.19.* \
+       libdbd-sqlite3-perl=1.64-* \
+       libdbi-perl=1.643-* \
+       libdpkg-perl=1.19.* \
+       libhttp-date-perl=6.05-* \
+       libio-pty-perl=1:1.12-* \
+       libserf-1-1=1.3.* \
+       libsvn-perl=1.13.* \
+       libsvn1=1.13.* \
+       libtcl8.6=8.6.* \
+       libtimedate-perl=2.3200-* \
+       libunistring2=0.9.* \
+       libxml2-utils=2.9.* \
+       libyaml-perl=1.30-* \
+       sgml-base=1.29.* \
+       subversion=1.13.* \
+       tcl=8.6.* \
+       tcl8.6=8.6.* \
+       xml-core=0.18* \
+       xmlto=0.0.* \
+       xsltproc=1.1.* \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
 # Download and set up GitVersion
-ENV GITVERSION_VERSION="5.3.5"
+ENV GITVERSION_VERSION="5.10.3"
 
 RUN set -ex \
     && wget "https://github.com/GitTools/GitVersion/archive/refs/tags/${GITVERSION_VERSION}.zip" -O /tmp/GitVersion_${GITVERSION_VERSION}.zip \
@@ -88,15 +150,6 @@ RUN set -ex \
     && chmod +x /usr/local/bin/dind /usr/local/bin/docker-compose \
 # Ensure docker-compose works
     && docker-compose version
-
-# Install dependencies by all python images equivalent to buildpack-deps:jessie
-# on the public repos.
-
-RUN set -ex \
-    && wget "https://bootstrap.pypa.io/pip/2.6/get-pip.py" -O /tmp/get-pip.py \
-    && python /tmp/get-pip.py \
-    && pip install awscli==1.* \
-    && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 VOLUME /var/lib/docker
 
