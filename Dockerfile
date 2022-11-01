@@ -53,17 +53,6 @@ RUN set -ex \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-# Download and set up GitVersion
-ENV GITVERSION_VERSION="5.3.5"
-
-RUN set -ex \
-    && wget "https://github.com/GitTools/GitVersion/archive/refs/tags/${GITVERSION_VERSION}.zip" -O /tmp/GitVersion_${GITVERSION_VERSION}.zip \
-    && mkdir -p /usr/local/GitVersion_${GITVERSION_VERSION} \
-    && unzip /tmp/GitVersion_${GITVERSION_VERSION}.zip -d /usr/local/GitVersion_${GITVERSION_VERSION} \
-    && rm /tmp/GitVersion_${GITVERSION_VERSION}.zip \
-    && echo "mono /usr/local/GitVersion_${GITVERSION_VERSION}/GitVersion.exe \$@" >> /usr/local/bin/gitversion \
-    && chmod +x /usr/local/bin/gitversion
-
 # Install Docker
 ENV DOCKER_BUCKET="download.docker.com" \
     DOCKER_VERSION="20.10.8" \
