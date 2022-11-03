@@ -24,18 +24,7 @@ RUN set -ex \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         software-properties-common \
-    && apt-add-repository ppa:git-core/ppa \
     && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        git=1:2.* \
-    && git version \
-    && apt-get install -y --no-install-recommends \
-        openssh-client=1:7.6* \
-    && mkdir ~/.ssh \
-    && touch ~/.ssh/known_hosts \
-    && ssh-keyscan -t rsa,dsa -H github.com >> ~/.ssh/known_hosts \
-    && ssh-keyscan -t rsa,dsa -H bitbucket.org >> ~/.ssh/known_hosts \
-    && chmod 600 ~/.ssh/known_hosts \
     && apt-get install -y --no-install-recommends \
         wget=1.19.* \
         curl=7.58.* \
