@@ -10,7 +10,7 @@
 # See the License for the specific language governing permissions and limitations under the License.
 #
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Install git, SSH, and other utilities
 RUN set -ex \
